@@ -1,0 +1,175 @@
+html, body, #map {
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background: black;
+}
+
+/* gives the tooltip a margin from the pointer */
+body > div.cartodb-tooltip{
+  margin-top: 10px !important;
+  margin-left: 10px !important;
+  border-radius: 15px;
+}
+/* gives to the tooltip different styles */
+div.cartodb-tooltip-content-wrapper{
+  padding: 10px 10px 10px 10px;
+  max-width:none;
+  text-align: center;
+  background-color: #FFF!important;
+  opacity: 0.9;
+  border-radius: 25px!important;
+}
+/* set styles to the <p> tag of the tooltip */
+ div.cartodb-tooltip-content-wrapper p{
+  color: black!important;
+}
+/* set infobox styles */
+.cartodb-infobox{
+  opacity:0.9;
+  background-color: #FFF!important;
+  color: #black!important;
+  border-radius: 25px!important;
+}
+
+/* set styles to the custom infowindow */
+.infowindow-custom{ 
+  position: relative;
+  text-align: justify;
+  width: 500px;
+  background-color: #FFF;
+  margin-bottom: 2px;
+  opacity: 0.9;
+  text-align: left;
+  background-color: #FFF;
+  color: #black;
+  border-radius: 10px;
+}
+.infowindow-custom img{ 
+  width: auto;
+  height: 55px;
+}      
+.cartodb-popup-content .content p{
+    text-align: left;
+    font-size: 14px;
+    color:black;
+}
+ 
+/* set styles to the custom infowindow -> close button */
+.cartodb-popup-close-button {
+  position: absolute;
+  top: -12px;
+  right: -11px;
+  width: 26px;
+  height: 26px;
+  background: url('http://libs.cartodb.com/cartodb.js/v3/themes/img/light.png') no-repeat 0 -23px;
+  text-indent: -9999px;
+  font-size: 0;
+  line-height: 0;
+  opacity: 1;
+  text-transform: uppercase;
+  z-index: 3;
+}
+/* set styles to the custom infowindow -> tip container */
+.cartodb-popup-tip-container{
+  position: absolute;
+  bottom: -13px;
+  left: 23px;
+  width: 16px;
+  height: 14px;
+  background: url('http://libs.cartodb.com/cartodb.js/v3/themes/img/light.png') no-repeat -23px -7px;
+  text-indent: -9999px;
+  font-size: 0;
+  line-height: 0;
+  opacity: 1;
+  z-index: 3;
+}
+
+/* set styles to the element with id= layer_selector */
+#layer_selector {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  padding-left: 30px;
+}
+#layer_selector ul {
+  padding: 0; margin: 0;
+  list-style-type: none;
+}
+#layer_selector li {
+  padding: 15px 30px;
+  font-size: 15px;
+  background-color: #FFF;  
+}
+#layer_selector li:hover {
+  background-color: #F0F0F0;
+  cursor: pointer;
+}
+#layer_selector li.selected {
+  background-color: #F0F0F0;
+}
+
+/* set styles to the element with class= sidepanel */
+.sidepanel{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  width: 400px;
+  height: auto;
+  opacity: 0.9;
+  padding: 5px 10px 5px 10px;
+  border-radius: 25px;
+  background-color: #FFF;
+  color: #black;
+  text-align: center;
+}
+.sidepanel img{
+  width: 300px;
+}
+.sidepanel h3{
+  font-style: bold;
+}
+.sidepanel p{
+  text-align: justify;
+  font-size: 16px;
+  color:black;
+}
+.sidepanel #header{
+  border-top: solid grey;
+  padding-top: 10px;
+  text-align: center;
+}
+.sidepanel #footer{
+  border-top: solid grey;
+  padding-top: 10px;
+  text-align: center;
+}
+.sidepanel a:hover, a:visited, a:link, a:active{
+  text-decoration:none;
+  color: #2c7fb8;
+}
+
+/* set styles to the element with class= legend */
+.cartodb-legend{
+   right: 20px;
+   bottom: 50px!important;
+   width: 120px;
+   height: auto;
+   background-color: #FFF;
+   opacity: 1;
+   border-radius: 25px!important;
+   color: black;
+ } 
+.cartodb-legend ul li{
+  color: black;
+  margin-left: 5px!important;
+  font-size: 10px!important;
+ }
+.cartodb-legend ul li #partner{
+  background: #ffcc00;
+  border-color: darken(#ffcc00, 40);
+}
+.cartodb-legend ul li #office{
+  background:#91e1d8;
+  border-color: #7fcdbb; 
+}

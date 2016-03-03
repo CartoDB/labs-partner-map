@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>CartoDB Partners Map | 2.0</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
+    <!-- include cartodb.js CSS library -->
+    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+     <!-- include cartodb.js library -->
+     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+  </head>
+
+  <body>
+
+    <div id="map"></div>
+
+    <!--<div id ="box">
+    <h4>Partner</h4>
+    <p id="partner"></p>
+    <h4>City</h4>
+    <p id="city"></p>
+    <h4>Country</h4>
+    <p id="country"></p>
+    <h4>Region</h4>
+    <p id="region"></p>
+    </div> --> <!-- #box -->
+
+    <div id="layer_selector" class="cartodb-infobox">
+      <ul>
+        <li id="emea" class="button emea">EMEA</li>
+        <li id="na" class="button na">NA</li>
+        <li id="latam" class="button latam">LATAM</li>
+        <li id="apac" class="button apac">APAC</li>
+        <li id="all" class="button all">All</li>
+      </ul>
+    </div> <!-- #layer-selector -->
+
+    <div class='cartodb-legend custom'>
+      <ul>
+        <li>
+          <div class="bullet" id="partner"></div> Partner
+        </li>
+        <li>
+          <div class="bullet" id="office"></div> CDB Office
+        </li>
+      </ul>
+    </div> <!-- .cartodb-legend -->
+
+    <div class="sidepanel">
+      <a href='http://cartodb.com/partners/' id="link"><img src="https://cartodb-libs.global.ssl.fastly.net/cartodb.com/static/logos_full_cartodb_light.svg" height="110px" width="auto" alt="cdb_logo" id="logo"></a>
+      <h3 id="header">Join our partners network</h3>
+      <p id="content">We are looking for businesses and freelancers to help us resell and implement CartoDB's business and location intelligence solutions. By becoming a partner you'll be ensuring that your clients receive the best mapping, data visualization, and analysis product on the market. 
+      <br>
+      <br>
+      Interested in becoming a partner?
+      <a href="mailto:partners@cartodb.com?subject=Access Partner Resources">Speak</a> with one of our Partners Managers today and start making actionable insights with big data. 
+      <br>
+      <br>
+      As a partner you can help to create better client matches. And with marketing and development support from CartoDB, you have an even better way to grow your business.</p>
+      <p id="footer"><a href="https://cartodb.com/signup">Apply now</a> and join our partners network at <b>CartoDB</b></p> 
+    </div> <!-- .sidepanel -->
+
+    <script type="infowindow/html" id="infowindow_template">
+        <div class="infowindow-custom">
+          <a href="#close" class="cartodb-popup-close-button close">x</a>
+           <div class="cartodb-popup-content">
+            <div class="content" style="padding:20px">
+              <a href="{{content.data.url}}"><img src="{{content.data.logo}}" alt="logo"></a>
+              <p>{{content.data.city}} ({{content.data.country}}) - {{content.data.region}}</p>
+              <p>{{content.data.description}}</p>
+              <p>Services: Data Analytics, Data Visualization, Mobile Applications...</p>
+        </div>
+    </script>
+
+    <script type="text/javascript" src="js/app.js"></script>
+
+  </body>
+
+</html>
