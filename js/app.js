@@ -122,7 +122,7 @@ function main() {
   var city;
   var partner;
 
-  var zoom3_yOffset = '60000';
+  var zoom3_yOffset = '60000'; // define yoffsets according to zoom level
   var zoom4_yOffset = '30000';
 
   // define map object
@@ -177,7 +177,7 @@ function main() {
       }
     ]
   })
-  .addTo(map) // add cartodb basemap (0) & layer (1) to map object
+  .addTo(map) // add cartodb basemap (0) & layers to map object
   .done(function(layer) {
 
     var sql = new cartodb.SQL({ user: 'ramirocartodb'}); // call SQL API
