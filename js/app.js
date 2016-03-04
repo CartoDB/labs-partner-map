@@ -31,7 +31,7 @@ function main() {
     '  WHERE f.cartodb_id = q.cartodb_id'
   ].join('\n');
 
-  var sql_emea = " AND q.region ILIKE ('EMEA')";
+  var sql_emea = " AND q.region ILIKE ('EMEA')"; // define partners subqueries
   var sql_na = " AND q.region ILIKE ('NA')";
   var sql_latam = " AND q.region ILIKE ('LATAM')";
   var sql_apac = " AND q.region ILIKE ('APAC')";
