@@ -1,7 +1,38 @@
 function main() {
 
+  var sql_partners = [ // define partners sql
+    'WITH m AS (',
+    'SELECT', 
+    ' array_agg(cartodb_id) id_list,', 
+    ' the_geom_webmercator,', 
+    ' ST_Y(the_geom_webmercator) y', 
+    ' FROM ramirocartodb.partners_map_dataset',
+    ' GROUP BY the_geom_webmercator', 
+    ' ORDER BY y DESC',
+    '),', 
+    'f AS (',
+    'SELECT',  
+    ' generate_series(1, array_length(id_list,1)) p,', 
+    ' unnest(id_list) cartodb_id,', 
+    ' the_geom_webmercator', 
+    ' FROM m',
+    ')',
+    ' SELECT',  
+    ' ST_Translate(f.the_geom_webmercator,0,f.p*30000) the_geom_webmercator,', 
+    ' f.cartodb_id,', 
+    ' q.city,', 
+    ' q.country,', 
+    ' q.description,', 
+    ' q.logo,', 
+    ' q.partner_s_name,', 
+    ' q.url,', 
+    ' q.region',
+    '  FROM f, ramirocartodb.partners_map_dataset q',
+    '  WHERE f.cartodb_id = q.cartodb_id'
+  ].join('\n');
+
   var stylePartners = [ // define partners style
-    '#cbd_partners_ds_sc{',
+    '#cbd_partners_dataset{',
     '  marker-fill-opacity: 0.9;',
     '  marker-line-color: darken(#ffcc00, 40);',
     '  marker-line-width: 0.5;',
@@ -120,7 +151,7 @@ function main() {
       },
       {
          type: "mapnik", // layer 3
-         sql: 'SELECT * FROM cbd_partners_ds_sc',
+         sql: sql_partners,
          cartocss: stylePartners,
          interactivity: ['cartodb_id','partner_s_name', 'url', 'logo', 'url', 'city', 'description', 'country','region']
       },
@@ -153,7 +184,7 @@ function main() {
     
     var LayerActions = { // get sublayers by region
     emea: function(){
-       layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_ds_sc WHERE region ILIKE 'EMEA' ");
+       layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'EMEA' ");
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'EMEA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -164,7 +195,7 @@ function main() {
         return true;
     },
     na: function(){
-       layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_ds_sc WHERE region ILIKE 'NA' "); 
+       layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'NA' "); 
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'NA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -175,7 +206,7 @@ function main() {
         return true;
     },
     latam: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_ds_sc WHERE region ILIKE 'LATAM' ");
+        layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'LATAM' ");
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'LATAM' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -186,7 +217,7 @@ function main() {
         return true;
     },
     apac: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_ds_sc WHERE region ILIKE 'APAC' ");
+        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_dataset WHERE region ILIKE 'APAC' ");
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'APAC' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -196,7 +227,7 @@ function main() {
         map.setView(centApac,4);
     },
     all: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_ds_sc ");
+        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_dataset ");
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
