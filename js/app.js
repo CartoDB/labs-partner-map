@@ -31,6 +31,11 @@ function main() {
     '  WHERE f.cartodb_id = q.cartodb_id'
   ].join('\n');
 
+  var sql_emea = " AND q.region ILIKE ('EMEA')";
+  var sql_na = " AND q.region ILIKE ('NA')";
+  var sql_latam = " AND q.region ILIKE ('LATAM')";
+  var sql_apac = " AND q.region ILIKE ('APAC')";
+
   var stylePartners = [ // define partners style
     '#cbd_partners_dataset{',
     '  marker-fill-opacity: 0.9;',
@@ -184,7 +189,7 @@ function main() {
     
     var LayerActions = { // get sublayers by region
     emea: function(){
-       layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'EMEA' ");
+       layer.getSubLayer(3).setSQL(sql_partners + sql_emea);
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'EMEA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -195,7 +200,7 @@ function main() {
         return true;
     },
     na: function(){
-       layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'NA' "); 
+       layer.getSubLayer(3).setSQL(sql_partners + sql_na); 
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'NA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -206,7 +211,7 @@ function main() {
         return true;
     },
     latam: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM partners_map_dataset WHERE region ILIKE 'LATAM' ");
+        layer.getSubLayer(3).setSQL(sql_partners + sql_latam);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'LATAM' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -217,7 +222,7 @@ function main() {
         return true;
     },
     apac: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_dataset WHERE region ILIKE 'APAC' ");
+        layer.getSubLayer(3).setSQL(sql_partners + sql_apac);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'APAC' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -227,7 +232,7 @@ function main() {
         map.setView(centApac,4);
     },
     all: function(){
-        layer.getSubLayer(3).setSQL("SELECT * FROM cbd_partners_dataset ");
+        layer.getSubLayer(3).setSQL(sql_partners);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
