@@ -18,7 +18,7 @@ function main() {
     ' FROM m',
     ')',
     ' SELECT',  
-    ' ST_Translate(f.the_geom_webmercator,0,f.p*30000) the_geom_webmercator,', 
+    ' ST_Translate(f.the_geom_webmercator,0,f.p*yOffset) the_geom_webmercator,', 
     ' f.cartodb_id,', 
     ' q.city,', 
     ' q.country,', 
@@ -122,11 +122,14 @@ function main() {
   var city;
   var partner;
 
+  var zoom3_yOffset = '60000';
+  var zoom4_yOffset = '30000';
+
   // define map object
   var map = new L.Map('map', { 
     zoomControl: false,
     minZoom: 3,
-    maxZoom: 5,
+    maxZoom: 4,
     center: [30, -45],
     zoom: 3
   });
@@ -156,7 +159,7 @@ function main() {
       },
       {
          type: "mapnik", // layer 3
-         sql: sql_partners,
+         sql: sql_partners.replace('yOffset', zoom3_yOffset),
          cartocss: stylePartners,
          interactivity: ['cartodb_id','partner_s_name', 'url', 'logo', 'url', 'city', 'description', 'country','region']
       },
@@ -176,9 +179,6 @@ function main() {
   })
   .addTo(map) // add cartodb basemap (0) & layer (1) to map object
   .done(function(layer) {
-    layer.on('featureClick', function(e, latlng, pos, data) {
-      map.setView(latlng, 5); // set view/zoom to selection
-    })
 
     var sql = new cartodb.SQL({ user: 'ramirocartodb'}); // call SQL API
 
@@ -189,7 +189,7 @@ function main() {
     
     var LayerActions = { // get sublayers by region
     emea: function(){
-       layer.getSubLayer(3).setSQL(sql_partners + sql_emea);
+       layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_emea);
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'EMEA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -200,7 +200,7 @@ function main() {
         return true;
     },
     na: function(){
-       layer.getSubLayer(3).setSQL(sql_partners + sql_na); 
+       layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_na); 
        layer.getSubLayer(3).setCartoCSS(stylePartners);
        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'NA' ");
        layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -211,7 +211,7 @@ function main() {
         return true;
     },
     latam: function(){
-        layer.getSubLayer(3).setSQL(sql_partners + sql_latam);
+        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_latam);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'LATAM' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -222,7 +222,7 @@ function main() {
         return true;
     },
     apac: function(){
-        layer.getSubLayer(3).setSQL(sql_partners + sql_apac);
+        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_apac);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'APAC' ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
@@ -232,7 +232,7 @@ function main() {
         map.setView(centApac,4);
     },
     all: function(){
-        layer.getSubLayer(3).setSQL(sql_partners);
+        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom3_yOffset));
         layer.getSubLayer(3).setCartoCSS(stylePartners);
         layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds ");
         layer.getSubLayer(2).setCartoCSS(styleOffice);
