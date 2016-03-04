@@ -6,7 +6,7 @@ function main() {
     ' array_agg(cartodb_id) id_list,', 
     ' the_geom_webmercator,', 
     ' ST_Y(the_geom_webmercator) y', 
-    ' FROM ramirocartodb.partners_map_dataset',
+    ' FROM ramirocartodb.partners_map_dataset_sc',
     ' GROUP BY the_geom_webmercator', 
     ' ORDER BY y DESC',
     '),', 
@@ -27,7 +27,7 @@ function main() {
     ' q.partner_s_name,', 
     ' q.url,', 
     ' q.region',
-    '  FROM f, ramirocartodb.partners_map_dataset q',
+    '  FROM f, ramirocartodb.partners_map_dataset_sc q',
     '  WHERE f.cartodb_id = q.cartodb_id'
   ].join('\n');
 
@@ -127,7 +127,6 @@ function main() {
 
   // define map object
   var map = new L.Map('map', { 
-    zoomControl: false,
     minZoom: 3,
     maxZoom: 4,
     center: [30, -45],
@@ -179,6 +178,10 @@ function main() {
   })
   .addTo(map) // add cartodb basemap (0) & layers to map object
   .done(function(layer) {
+
+    map.touchZoom.disable(); // disable zoom control
+    map.doubleClickZoom.disable();
+    map.scrollWheelZoom.disable();
 
     var sql = new cartodb.SQL({ user: 'ramirocartodb'}); // call SQL API
 
