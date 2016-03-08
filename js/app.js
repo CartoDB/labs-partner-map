@@ -262,7 +262,7 @@ function main() {
     var tooltip = layer.leafletMap.viz.addOverlay({ // add tooltip
       type: 'tooltip',
       layer: layer.getSubLayer(3),
-      template: '<div class="cartodb-tooltip-content-wrapper"><p>{{city}}</p><p>{{partner_s_name}}</p></div>', 
+      template: "<div class='CDB-Tooltip-wrapper CDB-Tooltip-wrapper--topLeft'><div class='CDB-Tooltip CDB-Tooltip--isLight'><ul class='CDB-Tooltip-list'><li class='CDB-Tooltip-listItem'><h3 class='CDB-Tooltip-listTitle'>{{city}}</h3><h4 class='CDB-Tooltip-listText'>{{partner_s_name}}</h4></li></ul></div></div>", 
       width: 200,
       position: 'bottom|right',
       fields: [{ city: 'city' }, { partner_s_name: 'name' }]

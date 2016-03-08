@@ -8,10 +8,11 @@
     <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
     <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
     <!-- include cartodb.js CSS library -->
-    <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" />
+    <link rel="stylesheet" href="dist/themes/css/deep-insights.css" />
      <!-- include cartodb.js library -->
-     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
     <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <!--<script src="dist/deep-insights.uncompressed.js"></script>-->
   </head>
 
   <body>
@@ -38,7 +39,7 @@
         </li>
       </ul>
     </div> <!-- .cartodb-legend -->
-
+<!--
     <div class="sidepanel">
       <a href='http://cartodb.com/partners/' id="link"><img src="https://cartodb-libs.global.ssl.fastly.net/cartodb.com/static/logos_full_cartodb_light.svg" height="110px" width="auto" alt="cdb_logo" id="logo"></a>
       <h3 id="header">Join our partners network</h3>
@@ -51,20 +52,36 @@
       <br>
       As a partner you can help to create better client matches. And with marketing and development support from CartoDB, you have an even better way to grow your business.</p>
       <p id="footer"><a href="https://cartodb.com/signup">Apply now</a> and join our partners network at <b>CartoDB</b></p> 
-    </div> <!-- .sidepanel -->
+    </div> -->
 
     <script type="infowindow/html" id="infowindow_template">
-        <div class="infowindow-custom">
-          <a href="#close" class="cartodb-popup-close-button close">x</a>
-           <div class="cartodb-popup-content">
-            <div class="content" style="padding:20px">
-              <p id="title">{{content.data.partner_s_name}}</p>
-              <a href="{{content.data.url}}"><img src="{{content.data.logo}}" alt="logo"></a>
-              <p>{{content.data.city}} ({{content.data.country}}) - {{content.data.region}}</p>
-              <p>{{content.data.description}}</p>
+      <div class='CDB-infowindow CDB-infowindow--custom has-header js-infowindow'>
+        <div class='CDB-infowindow-container'>
+          <div class='CDB-infowindow-header CDB-infowindow-headerBg CDB-infowindow-headerBg--light' style='background: #2E3C43;'>
+            <div class='CDB-infowindow-list'>
+              <div class='CDB-infowindow-listItem'>
+                <h4 class='CDB-infowindow-title'>{{content.data.partner_s_name}}</h4>
+              </div>
+            </div>
+          </div>
+          <div class='CDB-infowindow-inner CDB-infowindow-inner--topSmall'>
+            <ul class='CDB-infowindow-list'>
+              <li class='CDB-infowindow-listItem'>
+                <h5 class='CDB-infowindow-subtitle'>City / Country</h5>
+                <h4 class='CDB-infowindow-title'>{{content.data.city}} / {{content.data.country}}</h4>
+              </li>
+              <li class='CDB-infowindow-listItem'>
+                <h5 class='CDB-infowindow-subtitle'>Description</h5>
+                <h4 class='CDB-infowindow-title'>{{content.data.description}}</h4>
+              </li>
+            </ul>
+          </div>
+          <div class='CDB-hook'>
+            <div class='CDB-hook-inner'>
             </div>
           </div>
         </div>
+      </div>
     </script>
 
     <script type="text/javascript" src="js/app.js"></script>
