@@ -68,3 +68,11 @@ div.cartodb-tooltip-content h4.CDB-Tooltip-listText {
 .CDB-infowindow-headerBg {
   position: relative;
 }
+
+.bullet#partner {
+  background: #F5C700;
+}
+.bullet#office {
+  background: #78AAA4;
+}
+
