@@ -192,25 +192,21 @@ function main() {
     var LayerActions = { // get sublayers by region
     emea: function(){
        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_emea);
-       layer.getSubLayer(3).setCartoCSS(stylePartners);
         map.setView(centEmea,4);
         return true;
     },
     na: function(){
        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_na); 
-       layer.getSubLayer(3).setCartoCSS(stylePartners);
         map.setView(centNa,4);
         return true;
     },
     latam: function(){
         layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_latam);
-        layer.getSubLayer(3).setCartoCSS(stylePartners);
         map.setView(centLatam,4);
         return true;
     },
     apac: function(){
         layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_apac);
-        layer.getSubLayer(3).setCartoCSS(stylePartners);
         map.setView(centApac,4);
     },
     all: function(){
