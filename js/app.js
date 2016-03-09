@@ -6,7 +6,7 @@ function main() {
     ' array_agg(cartodb_id) id_list,', 
     ' the_geom_webmercator,', 
     ' ST_Y(the_geom_webmercator) y', 
-    ' FROM ramirocartodb.partners_map_dataset_sc',
+    ' FROM ramirocartodb.partners_map_dataset_wo',
     ' GROUP BY the_geom_webmercator', 
     ' ORDER BY y DESC',
     '),', 
@@ -27,7 +27,7 @@ function main() {
     ' q.partner_s_name,', 
     ' q.url,', 
     ' q.region',
-    '  FROM f, ramirocartodb.partners_map_dataset_sc q',
+    '  FROM f, ramirocartodb.partners_map_dataset_wo q',
     '  WHERE f.cartodb_id = q.cartodb_id'
   ].join('\n');
 
