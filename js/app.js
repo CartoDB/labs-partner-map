@@ -246,11 +246,10 @@ function main() {
       }
     }  
 
-    $('.button').click(function() { // set button interaction
-      $('.button').removeClass('selected');
-      $(this).addClass('selected');
-      LayerActions[$(this).attr('id')]();
+    $('#layer_selector').change(function() { // set button interaction
+      LayerActions[$(this).val()]();
     });
+    
     layer.setInteraction(true);
 
     cdb.vis.Vis.addInfowindow( // add infowindow

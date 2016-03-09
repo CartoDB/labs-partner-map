@@ -20,24 +20,15 @@
 
     <div id="map"></div>
 
-    <div id="layer_selector" class="cartodb-infobox">
-      <select>
-        <option selected>Select an area</option>
-        <option id="all" class="button all">All</option>
-        <option id="emea" class="button emea">Emea</option>
-        <option id="na" class="button na">North America</option>
-        <option id="latam" class="button latam">Latam</option>
-        <option id="apac" class="button apac">Apac</option>
+    <div class="cartodb-infobox">
+      <select id="layer_selector">
+        <option value="all" class="button all">All</option>
+        <option value="emea" class="button emea">EMEA</option>
+        <option value="na" class="button na">North America</option>
+        <option value="latam" class="button latam">LATAM</option>
+        <option value="apac" class="button apac">APAC</option>
       </select>
-      <!--
-      <ul>
-        <li id="emea" class="button emea">EMEA</li>
-        <li id="na" class="button na">NA</li>
-        <li id="latam" class="button latam">LATAM</li>
-        <li id="apac" class="button apac">APAC</li>
-        <li id="all" class="button all">All</li>
-      </ul>-->
-    </div>
+    </div> <!-- .cartodb-infobox -->
 
     <div class='cartodb-legend custom'>
       <ul>
