@@ -76,3 +76,7 @@ div.cartodb-tooltip-content h4.CDB-Tooltip-listText {
   background: #78AAA4;
 }
 
+.CDB-SelectFake {
+  width: 200px;
+}
+
