@@ -24,11 +24,30 @@ html, body, #map {
 
 .CDB-Tooltip-wrapper {
   display: block !important;
+  position: static;
   min-width: 200px;
   max-width: 200px;
-  pointer-events: none;
 }
 
-.cartodb-tooltip {
-  position: absolute;
+div.cartodb-tooltip {
+  min-width: 200px !important;
+  max-width: 200px !important;
+  pointer-events: none;
+}
+div.cartodb-tooltip-content {
+  padding: 0 !important;
+}
+
+div.cartodb-tooltip-content-wrapper {
+  background: none;
+  border-radius: 0;
+}
+
+
+div.cartodb-tooltip-content h4.CDB-Tooltip-listText {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 16px;
+  font-family: 'Open Sans';
+  color: #333;
 }
