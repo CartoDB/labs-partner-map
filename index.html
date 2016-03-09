@@ -39,20 +39,6 @@
         </li>
       </ul>
     </div> <!-- .cartodb-legend -->
-<!--
-    <div class="sidepanel">
-      <a href='http://cartodb.com/partners/' id="link"><img src="https://cartodb-libs.global.ssl.fastly.net/cartodb.com/static/logos_full_cartodb_light.svg" height="110px" width="auto" alt="cdb_logo" id="logo"></a>
-      <h3 id="header">Join our partners network</h3>
-      <p id="content">We are looking for businesses and freelancers to help us resell and implement CartoDB's business and location intelligence solutions. By becoming a partner you'll be ensuring that your clients receive the best mapping, data visualization, and analysis product on the market. 
-      <br>
-      <br>
-      Interested in becoming a partner?
-      <a href="mailto:partners@cartodb.com?subject=Access Partner Resources">Speak</a> with one of our Partners Managers today and start making actionable insights with big data. 
-      <br>
-      <br>
-      As a partner you can help to create better client matches. And with marketing and development support from CartoDB, you have an even better way to grow your business.</p>
-      <p id="footer"><a href="https://cartodb.com/signup">Apply now</a> and join our partners network at <b>CartoDB</b></p> 
-    </div> -->
 
     <script type="infowindow/html" id="infowindow_template">
       <div class='CDB-infowindow CDB-infowindow--custom has-header js-infowindow'>
@@ -66,6 +52,9 @@
           </div>
           <div class='CDB-infowindow-inner CDB-infowindow-inner--topSmall'>
             <ul class='CDB-infowindow-list'>
+              <li class='CDB-infowindow-listItem'>
+                <a href="{{content.data.url}}"><img src="{{content.data.logo}}" alt="logo" height=auto width=80px></a>
+              </li>
               <li class='CDB-infowindow-listItem'>
                 <h5 class='CDB-infowindow-subtitle'>City / Country</h5>
                 <h4 class='CDB-infowindow-title'>{{content.data.city}} / {{content.data.country}}</h4>
