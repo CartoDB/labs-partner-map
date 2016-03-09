@@ -127,8 +127,7 @@ function main() {
 
   // define map object
   var map = new L.Map('map', { 
-    minZoom: 3,
-    maxZoom: 4,
+    zoomControl: false,
     center: [30, -45],
     zoom: 3
   });
@@ -194,44 +193,24 @@ function main() {
     emea: function(){
        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_emea);
        layer.getSubLayer(3).setCartoCSS(stylePartners);
-       layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'EMEA' ");
-       layer.getSubLayer(2).setCartoCSS(styleOffice);
-       layer.getSubLayer(5).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'EMEA' ");
-       layer.getSubLayer(5).setCartoCSS(styleLabels);
-       layer.getSubLayer(4).hide();
         map.setView(centEmea,4);
         return true;
     },
     na: function(){
        layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_na); 
        layer.getSubLayer(3).setCartoCSS(stylePartners);
-       layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'NA' ");
-       layer.getSubLayer(2).setCartoCSS(styleOffice);
-       layer.getSubLayer(5).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'NA' ");
-       layer.getSubLayer(5).setCartoCSS(styleLabels);
-       layer.getSubLayer(4).hide();
         map.setView(centNa,4);
         return true;
     },
     latam: function(){
         layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_latam);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
-        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'LATAM' ");
-        layer.getSubLayer(2).setCartoCSS(styleOffice);
-        layer.getSubLayer(5).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'LATAM' ");
-        layer.getSubLayer(5).setCartoCSS(styleLabels);
-        layer.getSubLayer(4).hide();
         map.setView(centLatam,4);
         return true;
     },
     apac: function(){
         layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom4_yOffset) + sql_apac);
         layer.getSubLayer(3).setCartoCSS(stylePartners);
-        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'APAC' ");
-        layer.getSubLayer(2).setCartoCSS(styleOffice);
-        layer.getSubLayer(5).setSQL("SELECT * FROM cbd_offices_ds WHERE region ILIKE 'APAC' ");
-        layer.getSubLayer(5).setCartoCSS(styleLabels);
-        layer.getSubLayer(4).hide();
         map.setView(centApac,4);
     },
     all: function(){
