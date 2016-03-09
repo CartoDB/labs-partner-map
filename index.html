@@ -20,16 +20,24 @@
 
     <div id="map"></div>
 
-<!--
     <div id="layer_selector" class="cartodb-infobox">
+      <select>
+        <option selected>Select an area</option>
+        <option id="all" class="button all">All</option>
+        <option id="emea" class="button emea">Emea</option>
+        <option id="na" class="button na">North America</option>
+        <option id="latam" class="button latam">Latam</option>
+        <option id="apac" class="button apac">Apac</option>
+      </select>
+      <!--
       <ul>
         <li id="emea" class="button emea">EMEA</li>
         <li id="na" class="button na">NA</li>
         <li id="latam" class="button latam">LATAM</li>
         <li id="apac" class="button apac">APAC</li>
         <li id="all" class="button all">All</li>
-      </ul>
-    </div>-->
+      </ul>-->
+    </div>
 
     <div class='cartodb-legend custom'>
       <ul>
@@ -49,6 +57,7 @@
             <div class='CDB-infowindow-list'>
               <div class='CDB-infowindow-listItem'>
                 <h4 class='CDB-infowindow-title'>{{content.data.partner_s_name}}</h4>
+                <a href='#close' class='cartodb-popup-close-button close'>x</a>
               </div>
             </div>
           </div>

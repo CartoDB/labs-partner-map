@@ -51,3 +51,20 @@ div.cartodb-tooltip-content h4.CDB-Tooltip-listText {
   font-family: 'Open Sans';
   color: #333;
 }
+
+.cartodb-infobox {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.cartodb-popup-close-button {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  color: #fff !important;
+}
+
+.CDB-infowindow-headerBg {
+  position: relative;
+}
