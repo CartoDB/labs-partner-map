@@ -211,12 +211,6 @@ function main() {
     },
     all: function(){
         layer.getSubLayer(3).setSQL(sql_partners.replace('yOffset', zoom3_yOffset));
-        layer.getSubLayer(3).setCartoCSS(stylePartners);
-        layer.getSubLayer(2).setSQL("SELECT * FROM cbd_offices_ds ");
-        layer.getSubLayer(2).setCartoCSS(styleOffice);
-        layer.getSubLayer(5).setSQL("SELECT * FROM cbd_offices_ds ");
-        layer.getSubLayer(5).setCartoCSS(styleLabels);
-        layer.getSubLayer(4).show();
         map.setView([30, -45],3);
       }
     }  
